@@ -1,0 +1,36 @@
+/*
+Calculate the Sum of all 
+distinct elements from the set 
+*/
+ALGORITHM sum_distinct_element_set
+VAR
+  set1 : ARRAY_OF INTEGER[4];
+  set2 : ARRAY_OF INTEGER[5];
+  i,j : INTEGER;
+  sum : INTEGER := 0;
+BEGIN
+  // Compare each element of set1 to set2
+  FOR i FROM 0 TO set1.length-1 STEP 1  DO
+    FOR j FROM 0 TO set2.length-1 STEP 1  DO
+      IF (set1[i] = set2[j]) THEN
+        BREAK;
+      ELSE
+        sum := sum + set1[i];
+      END_IF
+    END_FOR
+  END_FOR
+
+  // Compare each element of set2 to set1
+  FOR j FROM 0 TO set2.length-1 STEP 1  DO
+    FOR i FROM 0 TO set1.length-1 STEP 1  DO
+      IF (set2[j] = set1[i]) THEN
+        BREAK;
+      ELSE
+        sum := sum + set2[j]
+      END_IF
+    END_FOR
+  END_FOR
+
+  // Displaying the sum
+  Write(sum);
+END

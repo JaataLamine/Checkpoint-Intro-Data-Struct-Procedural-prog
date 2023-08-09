@@ -1,0 +1,72 @@
+/*
+A dot_product procedure which
+calculates in the variable ps, the 
+dot(scalar) product of v1 and v2
+here ps is passed by reference
+*/
+PROCEDURE dot_product(VAR v1, v2: ARRAY_OF INTEGER[50])
+VAR
+  i, ps: INTEGER;
+BEGIN
+  FOR i FROM 0 TO v1.length-1 STEP 1  DO
+    ps := ps + v1[i] * v2[i];
+  END_FOR
+  Write(ps);
+END
+
+/*
+Algorithm which determines, whether two vectors
+are orthogonal, by calling the dot_product.
+*/
+ALGORITHM ortogonal_vectors_procedure
+VAR
+  vect1, vect2: ARRAY_OF INTEGER[50];
+  i, ps: INTEGER;
+BEGIN
+  // Defining if the vectors are orthogonal by using procedure
+  ps:= dot_product(vect1, vect2);
+
+  // 2 vectors are orthogonals
+  // if the dot product of vect1 and vect2 = 0 
+  IF (ps = 0) THEN
+    Write("vect1 and vect2 are orthogonal");
+  ELSE
+    Write("vect1 and vect2 are not orthogonal");
+  END_IF
+
+END
+
+/*
+Function dot_product
+*/
+FUNCTION dot_product_func(v1,v2: ARRAY_OF INTEGER[50]) : INTEGER
+VAR
+  i, ps: INTEGER;
+  ps := 0;
+BEGIN
+  FOR i FROM 0 TO v1.length-1 STEP 1  DO
+    ps := ps + v1[i] * v2[i];
+  END_FOR
+  RETURN ps ;
+END
+
+/*
+Algorithm which determines, whether two vectors
+are orthogonal, by calling the dot_product_func.
+*/
+ALGORITHM ortogonal_vectors_function
+VAR
+  vect1, vect2: ARRAY_OF INTEGER[50];
+  i, ps: INTEGER;
+BEGIN
+  // Defining if the vectors are orthogonal by using function
+  ps:= dot_product_func(vect1, vect2);
+
+  // 2 vectors are orthogonals
+  // if the dot product of vect1 and vect2 = 0 
+  IF (ps = 0) THEN
+    Write("vect1 and vect2 are orthogonal");
+  ELSE
+    Write("vect1 and vect2 are not orthogonal");
+  END_IF
+END
